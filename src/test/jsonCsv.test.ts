@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { jsonArrayToCsv, csvToJsonArray } from '../utils/jsonCsv';
+import { jsonArrayToCsv } from '../utils/jsonCsv';
 
 describe('jsonArrayToCsv', () => {
     it('should convert a simple JSON array to CSV', () => {
@@ -38,15 +38,5 @@ describe('jsonArrayToCsv', () => {
         const empty = JSON.stringify([]);
         const csv = jsonArrayToCsv(empty);
         expect(csv.trim()).to.equal('');
-    });
-});
-
-// Generate test for CSV to JSON Array conversion
-describe('csvToJsonArray', () => {
-    it('empty', () => {
-        const csv = '"name","age"\n"Alice","30"\n"Bob","25"';
-        const jsonArray = csvToJsonArray(csv);
-        expect(jsonArray).to.deep.equal([]);
-        // TODO implement the test
     });
 });

@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { compareJson, inspectPath } from './commands/compareJson';
-import { jsonArrayToCsv, csvToJsonArray } from './utils/jsonCsv';
+import { jsonArrayToCsvNestedObject, csvToJsonArrayNestedObject } from './utils/jsonCsv';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -64,7 +64,7 @@ export function activate(context: vscode.ExtensionContext) {
             text = editor.document.getText(); // If no selection, convert the whole document
         }
 
-        const csvText = jsonArrayToCsv(text);
+        const csvText = jsonArrayToCsvNestedObject(text);
         if (!csvText) {
             vscode.window.showErrorMessage('Failed to convert JSON Array to CSV.');
             return;
@@ -95,7 +95,7 @@ export function activate(context: vscode.ExtensionContext) {
             text = editor.document.getText(); // If no selection, convert the whole document
         }
 
-        const jsonArray = csvToJsonArray(text);
+        const jsonArray = csvToJsonArrayNestedObject(text);
         if (!jsonArray) {
             vscode.window.showErrorMessage('Failed to convert CSV to JSON Array.');
             return;
@@ -117,4 +117,5 @@ export function activate(context: vscode.ExtensionContext) {
 
 }
 
+// This function is required by VS Code extension API but does not need to perform any cleanup.
 export function deactivate() {}
