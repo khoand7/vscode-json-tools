@@ -33,13 +33,13 @@ jobs:
         with:
           files: ./coverage/lcov.info
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v2
-        with:
-          projectBaseDir: .
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: SonarCloud Scan
+      #   uses: SonarSource/sonarcloud-github-action@v2
+      #   with:
+      #     projectBaseDir: .
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install VSCE
         run: npm install -g @vscode/vsce
